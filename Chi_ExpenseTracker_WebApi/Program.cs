@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddConfiguration(); 
 //DB
 builder.Services.AddDbContext<_ExpenseDbContext>(
-        options => options.UseSqlServer(AppSettings.Connectionstrings?.Company));
+        options => options.UseSqlServer(AppSettings.Connectionstrings?.ChiConn));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
