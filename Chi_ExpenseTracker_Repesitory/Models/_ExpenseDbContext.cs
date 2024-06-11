@@ -13,6 +13,8 @@ public partial class _ExpenseDbContext : DbContext
 
     public virtual DbSet<CategoryEntity> Categories { get; set; }
 
+    public virtual DbSet<TransactionEntity> Transactions { get; set; }
+
     public virtual DbSet<UserEntity> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,6 +25,23 @@ public partial class _ExpenseDbContext : DbContext
 
             entity.Property(e => e.CategoryType).HasDefaultValue("Expense");
             entity.Property(e => e.Icon).HasDefaultValue("");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Categories)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Categories_Users");
+        });
+
+        modelBuilder.Entity<TransactionEntity>(entity =>
+        {
+            entity.HasKey(e => e.TransactionId).HasName("PK__Transact__55433A6B3F3289E8");
+
+            entity.HasOne(d => d.Category).WithMany(p => p.Transactions)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Transacti__Categ__19DFD96B");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Transactions)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Transacti__UserI__18EBB532");
         });
 
         modelBuilder.Entity<UserEntity>(entity =>

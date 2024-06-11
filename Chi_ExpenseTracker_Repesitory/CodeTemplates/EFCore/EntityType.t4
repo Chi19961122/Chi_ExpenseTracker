@@ -120,7 +120,7 @@ public partial class <#= EntityType.Name + "Entity" #>
             }
         }
 
-        var targetType = navigation.TargetEntityType.Name;
+        var targetType = navigation.TargetEntityType.Name + "Entity";
         if (navigation.IsCollection)
         {
 #>
