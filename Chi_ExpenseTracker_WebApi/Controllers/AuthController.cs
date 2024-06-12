@@ -53,6 +53,7 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
             return new ApiResponseModel
             {
                 Code = result.Code,
+                Msg = result.Msg,
                 Data = result.Data
             };
         }
@@ -64,7 +65,7 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         [HttpPost]
         public IActionResult RefreshToken([FromBody] JwtTokenDto tokenViewModel)
         {
-            JwtTokenDto result = _jwtAuth.RefreashToken(tokenViewModel);
+            var result = _jwtAuth.RefreashToken(tokenViewModel);
 
             return Ok(result);
         }

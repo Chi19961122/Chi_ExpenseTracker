@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Chi_ExpenseTracker_WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class CategoryController : Controller

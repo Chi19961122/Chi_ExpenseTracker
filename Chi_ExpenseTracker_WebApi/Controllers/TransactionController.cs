@@ -2,10 +2,12 @@
 using Chi_ExpenseTracker_Service.Common.Transaction;
 using Chi_ExpenseTracker_Service.Models.Api;
 using Chi_ExpenseTracker_Service.Models.Transaction;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chi_ExpenseTracker_WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class TransactionController : Controller
@@ -25,6 +27,7 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public ApiResponseModel GetAllTransactions(int userId)
         {
