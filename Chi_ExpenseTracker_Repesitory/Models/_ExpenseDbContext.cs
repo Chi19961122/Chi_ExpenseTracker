@@ -35,6 +35,8 @@ public partial class _ExpenseDbContext : DbContext
         {
             entity.HasKey(e => e.TransactionId).HasName("PK__Transact__55433A6B3F3289E8");
 
+            entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
+
             entity.HasOne(d => d.Category).WithMany(p => p.Transactions)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Transacti__Categ__19DFD96B");

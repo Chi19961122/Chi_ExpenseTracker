@@ -1,6 +1,8 @@
 ﻿using Chi_ExpenseTracker_Repesitory.Models;
 using Chi_ExpenseTracker_Service.Common.Category;
 using Chi_ExpenseTracker_Service.Models.Api;
+using Chi_ExpenseTracker_Service.Models.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chi_ExpenseTracker_WebApi.Controllers
@@ -40,12 +42,12 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <summary>
         /// 新增類別
         /// </summary>
-        /// <param name="categoryEntity"></param>
+        /// <param name="categoryDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public ApiResponseModel CreateCategories(CategoryEntity categoryEntity)
+        public ApiResponseModel CreateCategories(CategoryDto categoryDto)
         {
-            var result = _CategoryService.CreateCategories(categoryEntity);
+            var result = _CategoryService.CreateCategories(categoryDto);
 
             return new ApiResponseModel
             {
@@ -58,12 +60,12 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <summary>
         /// 編輯類別
         /// </summary>
-        /// <param name="categoryEntity"></param>
+        /// <param name="categoryDto"></param>
         /// <returns></returns>
         [HttpPost]
-        public ApiResponseModel EditCategories(CategoryEntity categoryEntity)
+        public ApiResponseModel EditCategories(CategoryDto categoryDto)
         {
-            var result = _CategoryService.EditCategories(categoryEntity);
+            var result = _CategoryService.EditCategories(categoryDto);
 
             return new ApiResponseModel
             {

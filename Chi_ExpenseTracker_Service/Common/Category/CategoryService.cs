@@ -2,6 +2,7 @@
 using Chi_ExpenseTracker_Repesitory.Models;
 using Chi_ExpenseTracker_Service.Models.Api;
 using Chi_ExpenseTracker_Service.Models.Api.Enums;
+using Chi_ExpenseTracker_Service.Models.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,26 +47,43 @@ namespace Chi_ExpenseTracker_Service.Common.Category
         /// </summary>
         /// <param name="categoryEntity"></param>
         /// <returns></returns>
-        public ApiResponseModel CreateCategories(CategoryEntity categoryEntity)
+        public ApiResponseModel CreateCategories(CategoryDto categoryDto)
         {
             var result = new ApiResponseModel();
 
-            var resultData = _CategoryRepository.Add(categoryEntity);
+            var categoryData = new CategoryEntity() 
+            {
+                UserId = categoryDto.UserId,
+                Title = categoryDto.Title,
+                CategoryType = categoryDto.CategoryType,
+                Icon = categoryDto.Icon,
+            };
+
+            var resultData = _CategoryRepository.Add(categoryData);
 
             result.ApiResult(ApiCodeEnum.Success);
             result.Data = resultData;
             return result;
         }
+
         /// <summary>
         /// 更新類別
         /// </summary>
         /// <param name="categoryEntity"></param>
         /// <returns></returns>
-        public ApiResponseModel EditCategories(CategoryEntity categoryEntity)
+        public ApiResponseModel EditCategories(CategoryDto categoryDto)
         {
             var result = new ApiResponseModel();
 
-            var resultData = _CategoryRepository.Update(categoryEntity);
+            var categoryData = new CategoryEntity()
+            {
+                UserId = categoryDto.UserId,
+                Title = categoryDto.Title,
+                CategoryType = categoryDto.CategoryType,
+                Icon = categoryDto.Icon,
+            };
+
+            var resultData = _CategoryRepository.Update(categoryData);
 
             result.ApiResult(ApiCodeEnum.Success);
             result.Data = resultData;

@@ -1,5 +1,6 @@
 ﻿using Chi_ExpenseTracker_Repesitory.Models;
 using Chi_ExpenseTracker_Service.Models.Api;
+using Chi_ExpenseTracker_Service.Models.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace Chi_ExpenseTracker_Service.Common.Category
     {
         ApiResponseModel GetCategories(int id = 0);
 
-        ApiResponseModel CreateCategories(CategoryEntity categoryEntity);
+        ApiResponseModel CreateCategories(CategoryDto categoryEntity);
 
-        ApiResponseModel EditCategories(CategoryEntity categoryEntity);
+        ApiResponseModel EditCategories(CategoryDto categoryDto);
 
         ApiResponseModel DeleteCategoryById(int categoryId);
     }
