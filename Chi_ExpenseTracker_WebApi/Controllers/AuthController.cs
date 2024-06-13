@@ -17,9 +17,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <summary>
         /// JWT服務載入
         /// </summary>
-        public AuthController(IJwtAuthService jwtAuthService)
+        public AuthController(IServiceProvider serviceProvider)
         {
-            _jwtAuth = jwtAuthService;
+            _jwtAuth = serviceProvider.GetService<IJwtAuthService>();
         }
 
         /// <summary>

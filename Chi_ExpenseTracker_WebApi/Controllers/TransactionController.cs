@@ -1,4 +1,5 @@
 ﻿using Chi_ExpenseTracker_Service.Common.Category;
+using Chi_ExpenseTracker_Service.Common.Jwt;
 using Chi_ExpenseTracker_Service.Common.Transaction;
 using Chi_ExpenseTracker_Service.Models.Api;
 using Chi_ExpenseTracker_Service.Models.Transaction;
@@ -17,9 +18,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <summary>
         /// 服務注入
         /// </summary>
-        public TransactionController(ITransactionService transactionService)
+        public TransactionController(IServiceProvider serviceProvider)
         {
-            _TransactionService = transactionService;
+            _TransactionService = serviceProvider.GetService<ITransactionService>();
         }
 
         /// <summary>

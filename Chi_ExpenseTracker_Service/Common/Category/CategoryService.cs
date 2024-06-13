@@ -1,8 +1,10 @@
 ﻿using Chi_ExpenseTracker_Repesitory.Database.Repository;
 using Chi_ExpenseTracker_Repesitory.Models;
+using Chi_ExpenseTracker_Service.Common.Transaction;
 using Chi_ExpenseTracker_Service.Models.Api;
 using Chi_ExpenseTracker_Service.Models.Api.Enums;
 using Chi_ExpenseTracker_Service.Models.Category;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,9 @@ namespace Chi_ExpenseTracker_Service.Common.Category
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _CategoryRepository; 
-        public CategoryService(ICategoryRepository categoryRepository) 
+        public CategoryService(IServiceProvider serviceProvider) 
         {
-            _CategoryRepository = categoryRepository;
+            _CategoryRepository = serviceProvider.GetService<ICategoryRepository>();
         }
 
         /// <summary>

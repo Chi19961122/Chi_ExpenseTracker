@@ -9,7 +9,7 @@ namespace Chi_ExpenseTracker_Repesitory.Database.Repository
 {
     public class CategoryRepository : DbBase<CategoryEntity, _ExpenseDbContext>, ICategoryRepository
     {
-        public CategoryRepository(_ExpenseDbContext dbContext) : base(dbContext)
+        public CategoryRepository(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 

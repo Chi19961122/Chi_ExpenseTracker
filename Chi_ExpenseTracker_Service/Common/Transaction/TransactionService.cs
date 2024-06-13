@@ -4,6 +4,7 @@ using Chi_ExpenseTracker_Service.Models.Api;
 using Chi_ExpenseTracker_Service.Models.Api.Enums;
 using Chi_ExpenseTracker_Service.Models.Transaction;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace Chi_ExpenseTracker_Service.Common.Transaction
     public class TransactionService : ITransactionService
     {
         private readonly ITransactionRepository _TransactionRepo;
-        public TransactionService(ITransactionRepository transactionRepo)
+        public TransactionService(IServiceProvider serviceProvider)
         {
-            _TransactionRepo = transactionRepo;
+            _TransactionRepo = serviceProvider.GetService<ITransactionRepository>();
         }
 
         /// <summary>

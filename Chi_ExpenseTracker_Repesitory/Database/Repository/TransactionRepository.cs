@@ -9,7 +9,7 @@ namespace Chi_ExpenseTracker_Repesitory.Database.Repository
 {
     public class TransactionRepository : DbBase<TransactionEntity, _ExpenseDbContext>, ITransactionRepository 
     {
-        public TransactionRepository(_ExpenseDbContext dbContext) : base(dbContext)
+        public TransactionRepository(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
     }

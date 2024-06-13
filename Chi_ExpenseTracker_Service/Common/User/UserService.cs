@@ -1,6 +1,7 @@
 ﻿using Chi_ExpenseTracker_Repesitory.Database.Repository;
 using Chi_ExpenseTracker_Repesitory.Models;
 using Chi_ExpenseTracker_Service.Common.User;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace Chi_ExpenseTracker_Service.Common.UserService
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+        public UserService(IServiceProvider serviceProvider)
         {
-            _userRepository = userRepository;
+            _userRepository = serviceProvider.GetService<IUserRepository>();
         }
 
         public UserEntity GetUserByAccount(string account)

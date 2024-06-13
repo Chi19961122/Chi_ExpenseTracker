@@ -17,9 +17,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <summary>
         /// 服務注入
         /// </summary>
-        public CategoryController(ICategoryService categoryService) 
+        public CategoryController(IServiceProvider serviceProvider) 
         {
-            _CategoryService = categoryService;
+            _CategoryService = serviceProvider.GetService<ICategoryService>();
         }
 
         /// <summary>

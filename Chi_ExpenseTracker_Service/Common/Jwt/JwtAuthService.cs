@@ -14,6 +14,7 @@ using Chi_ExpenseTracker_Repesitory.Database.Repository;
 using System.Text;
 using Chi_ExpenseTracker_Service.Models.User;
 using Azure.Core;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Chi_ExpenseTracker_Service.Common.Jwt
 {
@@ -22,13 +23,11 @@ namespace Chi_ExpenseTracker_Service.Common.Jwt
         private readonly IUserService? _userService;
         private readonly IHttpContextAccessor? _httpContextAccessor;
         private readonly IUserRepository _userRepository;
-        public JwtAuthService(IUserService userService,
-            IHttpContextAccessor httpContextAccessor,
-            IUserRepository userRepository)
+        public JwtAuthService(IServiceProvider serviceProvider)
         {
-            _userService = userService;
-            _httpContextAccessor = httpContextAccessor;
-            _userRepository = userRepository;
+            _userService = serviceProvider.GetService<IUserService>();
+            _httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+            _userRepository = serviceProvider.GetService<IUserRepository>();
         }
 
         /// <summary>
