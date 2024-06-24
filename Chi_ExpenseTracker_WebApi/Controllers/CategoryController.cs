@@ -1,5 +1,4 @@
-﻿using Chi_ExpenseTracker_Repesitory.Models;
-using Chi_ExpenseTracker_Service.Common.Category;
+﻿using Chi_ExpenseTracker_Service.Common.Category;
 using Chi_ExpenseTracker_Service.Models.Api;
 using Chi_ExpenseTracker_Service.Models.Category;
 using Microsoft.AspNetCore.Authorization;

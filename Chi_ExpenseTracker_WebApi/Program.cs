@@ -1,30 +1,30 @@
 using Chi_ExpenseTracker_Repesitory.Configuration;
-using Chi_ExpenseTracker_Repesitory.Database;
-using Chi_ExpenseTracker_Repesitory.Database.Repository;
+using Chi_ExpenseTracker_Repesitory.Infrastructure.Cors;
+using Chi_ExpenseTracker_Repesitory.Infrastructure.Ioc;
+using Chi_ExpenseTracker_Repesitory.Infrastructure.Jwt;
+using Chi_ExpenseTracker_Repesitory.Infrastructure.Swagger;
 using Chi_ExpenseTracker_Repesitory.Models;
-using Chi_ExpenseTracker_Service.Common.Jwt;
-using Chi_ExpenseTracker_Service.Common.User;
-using Chi_ExpenseTracker_Service.Common.UserService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //實體化appsettings
 builder.AddConfiguration(); 
+
 //DB
 builder.Services.AddDbContext<_ExpenseDbContext>(
-        options => options.UseSqlServer(AppSettings.Connectionstrings?.ChiConn));
+        options => options.UseSqlServer(AppSettings.Connectionstrings?.Company));
+//套件
+builder.AddSwagger();
+
+builder.AddAutofac();
+
+builder.AddJwt();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-//依賴注入
-builder.Services.AddScoped(typeof(DbBase<,>));
-builder.Services.AddScoped<IJwtAuthService, JwtAuthService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+//builder.Services.AddSwaggerGen();
 
 //其他
 builder.Services.AddHttpClient();
@@ -33,6 +33,7 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthorization();
 
+builder.AddCorsPolicy();
 
 
 var app = builder.Build();
@@ -47,6 +48,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.AddCorsConfigure();
 
 app.MapControllers();
 
