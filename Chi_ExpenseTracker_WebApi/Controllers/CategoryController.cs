@@ -27,9 +27,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public ApiResponseModel GetCategories(int id = 0) 
+        public ApiResponseModel GetCategories(int userId) 
         {
-            var result = _CategoryService.GetCategories(id);
+            var result = _CategoryService.GetCategories(userId);
 
             return new ApiResponseModel
             {

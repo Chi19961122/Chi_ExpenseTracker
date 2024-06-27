@@ -25,21 +25,24 @@ namespace Chi_ExpenseTracker_Service.Common.Category
         /// 取得類別
         /// </summary>
         /// <returns></returns>
-        public ApiResponseModel GetCategories(int id = 0)
+        public ApiResponseModel GetCategories(int userId)
         {
             var result = new ApiResponseModel();
 
-            if (id > 0) 
-            {
-               var resultData = _CategoryRepository.Filter(x => x.CategoryId == id).FirstOrDefault();
-               result.Data = resultData;
-            }
-            else 
-            {
-                var resultData = _CategoryRepository.Filter().ToList();
-                result.Data = resultData;
-            }
+            var resultData = _CategoryRepository.Filter(x => x.UserId == userId);
 
+            //if (id > 0) 
+            //{
+            //   var resultData = _CategoryRepository.Filter(x => x.CategoryId == id).FirstOrDefault();
+            //   result.Data = resultData;
+            //}
+            //else 
+            //{
+            //    var resultData = _CategoryRepository.Filter().ToList();
+            //    result.Data = resultData;
+            //}
+
+            result.Data = resultData;
             result.ApiResult(ApiCodeEnum.Success);
             return result;
         }
