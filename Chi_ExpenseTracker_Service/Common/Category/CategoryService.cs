@@ -83,6 +83,7 @@ namespace Chi_ExpenseTracker_Service.Common.Category
             var categoryData = new CategoryEntity()
             {
                 UserId = categoryDto.UserId,
+                CategoryId = categoryDto.CategoryId,
                 Title = categoryDto.Title,
                 CategoryType = categoryDto.CategoryType,
                 Icon = categoryDto.Icon,
@@ -100,11 +101,11 @@ namespace Chi_ExpenseTracker_Service.Common.Category
         /// </summary>
         /// <param name="categoryId"></param>
         /// <returns></returns>
-        public ApiResponseModel DeleteCategoryById(int categoryId)
+        public ApiResponseModel DeleteCategoryById(int userId, int categoryId)
         {
             var result = new ApiResponseModel();
 
-            var resultData = _CategoryRepository.DeleteByFilter(x => x.CategoryId == categoryId);
+            var resultData = _CategoryRepository.DeleteByFilter(x => x.UserId == userId && x.CategoryId == categoryId);
 
             result.ApiResult(ApiCodeEnum.Success);
             result.Data = resultData;

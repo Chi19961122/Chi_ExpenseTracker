@@ -81,9 +81,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <param name="categoryId"></param>
         /// <returns></returns>
         [HttpDelete]
-        public ApiResponseModel DeleteCategoryById(int categoryId)
+        public ApiResponseModel DeleteCategoryById(int userId, int categoryId)
         {
-            var result = _CategoryService.DeleteCategoryById(categoryId);
+            var result = _CategoryService.DeleteCategoryById(userId, categoryId);
 
             return new ApiResponseModel
             {

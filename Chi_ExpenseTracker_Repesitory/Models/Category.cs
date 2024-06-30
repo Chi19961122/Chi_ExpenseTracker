@@ -11,6 +11,8 @@ public partial class CategoryEntity
     [Key]
     public int CategoryId { get; set; }
 
+    public int UserId { get; set; }
+
     [StringLength(50)]
     public string Title { get; set; } = null!;
 
@@ -19,8 +21,6 @@ public partial class CategoryEntity
 
     [StringLength(10)]
     public string? CategoryType { get; set; }
-
-    public int UserId { get; set; }
 
     [InverseProperty("Category")]
     public virtual ICollection<TransactionEntity> Transactions { get; set; } = new List<TransactionEntity>();

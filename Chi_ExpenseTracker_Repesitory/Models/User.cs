@@ -9,8 +9,7 @@ namespace Chi_ExpenseTracker_Repesitory.Models;
 public partial class UserEntity
 {
     [Key]
-    [Column("id")]
-    public int Id { get; set; }
+    public int UserId { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]

@@ -17,6 +17,6 @@ namespace Chi_ExpenseTracker_Service.Common.Category
 
         ApiResponseModel EditCategories(CategoryDto categoryDto);
 
-        ApiResponseModel DeleteCategoryById(int categoryId);
+        ApiResponseModel DeleteCategoryById(int userId, int categoryId);
     }
 }
