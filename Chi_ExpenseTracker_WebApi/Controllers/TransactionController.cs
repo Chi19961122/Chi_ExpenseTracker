@@ -106,9 +106,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <param name="transactionId"></param>
         /// <returns></returns>
         [HttpDelete]
-        public ApiResponseModel DeleteTransactions(int transactionId)
+        public ApiResponseModel DeleteTransactions(int userId, int transactionId)
         {
-            var result = _TransactionService.DeleteTransactions(transactionId);
+            var result = _TransactionService.DeleteTransactions(userId,transactionId);
 
             return new ApiResponseModel
             {

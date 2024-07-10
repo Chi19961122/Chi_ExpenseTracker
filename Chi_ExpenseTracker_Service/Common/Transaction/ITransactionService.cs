@@ -16,7 +16,7 @@ namespace Chi_ExpenseTracker_Service.Common.Transaction
 
         ApiResponseModel EditTransactions(TransactionDto transactionDto);
 
-        ApiResponseModel DeleteTransactions(int transactionId);
+        ApiResponseModel DeleteTransactions(int userId, int transactionId);
 
         ApiResponseModel GetAllTransactions(int userId);
 

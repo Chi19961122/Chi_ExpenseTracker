@@ -22,6 +22,11 @@ namespace Chi_ExpenseTracker_Service.Models.Jwt
         public string? Account { set; get; }
 
         /// <summary>
+        /// 用戶名稱
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
         /// 角色
         /// </summary>
         public string? Role { set; get; }

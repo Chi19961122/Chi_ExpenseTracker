@@ -17,5 +17,7 @@ namespace Chi_ExpenseTracker_Service.Models.Transaction
         public decimal Amount { get; set; }
 
         public string? Description { get; set; }
+
+        public DateTime CreateDate { get; set; }
     }
 }

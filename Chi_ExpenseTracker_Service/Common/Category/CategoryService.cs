@@ -25,11 +25,19 @@ namespace Chi_ExpenseTracker_Service.Common.Category
         /// 取得類別
         /// </summary>
         /// <returns></returns>
-        public ApiResponseModel GetCategories(int userId)
+        public ApiResponseModel GetCategories(int userId, string type = null)
         {
             var result = new ApiResponseModel();
+            var resultData = new List<CategoryEntity>();
 
-            var resultData = _CategoryRepository.Filter(x => x.UserId == userId);
+            if (!string.IsNullOrEmpty(type))
+            {
+                resultData = _CategoryRepository.Filter(x => x.UserId == userId && x.CategoryType == type).ToList();
+            }
+            else 
+            {
+                resultData = _CategoryRepository.Filter(x => x.UserId == userId).ToList();
+            }
 
             //if (id > 0) 
             //{

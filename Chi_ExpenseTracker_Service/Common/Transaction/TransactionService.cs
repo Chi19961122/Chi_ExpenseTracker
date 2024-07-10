@@ -17,9 +17,11 @@ namespace Chi_ExpenseTracker_Service.Common.Transaction
     public class TransactionService : ITransactionService
     {
         private readonly ITransactionRepository _TransactionRepo;
+        private readonly ICategoryRepository _CategoryRepository;
         public TransactionService(IServiceProvider serviceProvider)
         {
             _TransactionRepo = serviceProvider.GetService<ITransactionRepository>();
+            _CategoryRepository = serviceProvider.GetService<ICategoryRepository>();
         }
 
         /// <summary>
@@ -30,8 +32,26 @@ namespace Chi_ExpenseTracker_Service.Common.Transaction
         public ApiResponseModel GetAllTransactions(int userId)
         {
             var result = new ApiResponseModel();
+            var resultData = new List<GetAllTransResDto>();
 
-            var resultData = _TransactionRepo.Filter(x => x.UserId == userId);
+            var transData = _TransactionRepo.Filter(x => x.UserId == userId).ToList();
+
+            var categoryData = _CategoryRepository.Filter(x => x.UserId == userId).ToList();
+
+            resultData = transData.Join(categoryData,
+                transaction => transaction.CategoryId,
+                category => category.CategoryId,
+                (transaction, category) => new GetAllTransResDto
+                {
+                    TransactionId = transaction.TransactionId,
+                    UserId = transaction.UserId,
+                    CategoryId = transaction.CategoryId,
+                    CategoryName = category.Title,
+                    CategoryType = category.CategoryType,
+                    Amount = transaction.Amount,
+                    CreateDate = transaction.CreateDate,
+                    Description = transaction.Description,
+                }).ToList();
 
             result.ApiResult(ApiCodeEnum.Success);
             result.Data = resultData;
@@ -71,7 +91,8 @@ namespace Chi_ExpenseTracker_Service.Common.Transaction
                 UserId = transactionDto.UserId,
                 CategoryId = transactionDto.CategoryId,
                 Amount = transactionDto.Amount,
-                Description = transactionDto.Description
+                Description = transactionDto.Description,
+                CreateDate = transactionDto.CreateDate,
             };
 
             var resultData = _TransactionRepo.Add(transactionData);
@@ -111,16 +132,36 @@ namespace Chi_ExpenseTracker_Service.Common.Transaction
         /// </summary>
         /// <param name="transactionId"></param>
         /// <returns></returns>
-        public ApiResponseModel DeleteTransactions(int transactionId)
+        public ApiResponseModel DeleteTransactions(int userId, int transactionId)
         {
             var result = new ApiResponseModel();
 
-            var resultData = _TransactionRepo.DeleteByFilter(x => x.TransactionId == transactionId);
+            var resultData = _TransactionRepo.DeleteByFilter(x => x.UserId == userId && x.TransactionId == transactionId);
 
             result.ApiResult(ApiCodeEnum.Success);
             result.Data = resultData;
             return result;
         }
+
+    }
+
+    public class GetAllTransResDto
+    {
+        public int TransactionId { get; set; }
+
+        public int UserId { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public string CategoryName { get; set; }
+
+        public string CategoryType { get; set; }
+
+        public decimal Amount { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public string? Description { get; set; }
 
     }
 }

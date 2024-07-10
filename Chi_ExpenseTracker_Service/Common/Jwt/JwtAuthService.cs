@@ -96,6 +96,7 @@ namespace Chi_ExpenseTracker_Service.Common.Jwt
                 _userRepository.UpdateRefreshToken(user);
 
                 resultData.UserId = user.UserId;
+                resultData.UserName = user.UserName;
                 resultData.Token = GenerateToken(jwtLoginViewModel, 720);
                 resultData.Refresh = refreshToken;
                 resultData.Role = user.Role;

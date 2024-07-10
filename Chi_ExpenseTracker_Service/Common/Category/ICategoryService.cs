@@ -11,7 +11,7 @@ namespace Chi_ExpenseTracker_Service.Common.Category
 {
     public interface ICategoryService
     {
-        ApiResponseModel GetCategories(int id = 0);
+        ApiResponseModel GetCategories(int userId, string type = null);
 
         ApiResponseModel CreateCategories(CategoryDto categoryEntity);
 

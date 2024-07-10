@@ -13,7 +13,7 @@ builder.AddConfiguration();
 
 //DB
 builder.Services.AddDbContext<_ExpenseDbContext>(
-        options => options.UseSqlServer(AppSettings.Connectionstrings?.Company));
+        options => options.UseSqlServer(AppSettings.Connectionstrings?.ChiConn));
 //®M¥ó
 builder.AddSwagger();
 
