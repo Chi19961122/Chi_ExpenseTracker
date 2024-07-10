@@ -17,9 +17,9 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         /// <summary>
         /// JWT服務載入
         /// </summary>
-        public AuthController(IJwtAuthService jwtAuthService)
+        public AuthController(IServiceProvider serviceProvider)
         {
-            _jwtAuth = jwtAuthService;
+            _jwtAuth = serviceProvider.GetService<IJwtAuthService>();
         }
 
         /// <summary>
@@ -53,6 +53,7 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
             return new ApiResponseModel
             {
                 Code = result.Code,
+                Msg = result.Msg,
                 Data = result.Data
             };
         }
@@ -64,7 +65,7 @@ namespace Chi_ExpenseTracker_WebApi.Controllers
         [HttpPost]
         public IActionResult RefreshToken([FromBody] JwtTokenDto tokenViewModel)
         {
-            JwtTokenDto result = _jwtAuth.RefreashToken(tokenViewModel);
+            var result = _jwtAuth.RefreashToken(tokenViewModel);
 
             return Ok(result);
         }

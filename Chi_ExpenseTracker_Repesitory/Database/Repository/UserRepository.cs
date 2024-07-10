@@ -5,7 +5,7 @@ namespace Chi_ExpenseTracker_Repesitory.Database.Repository
 {
     public class UserRepository : DbBase<UserEntity, _ExpenseDbContext>, IUserRepository
     {
-        public UserRepository(_ExpenseDbContext dbContext) : base(dbContext)
+        public UserRepository(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 

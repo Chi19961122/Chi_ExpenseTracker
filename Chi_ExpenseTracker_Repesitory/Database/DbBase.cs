@@ -8,18 +8,22 @@ using System.Linq.Expressions;
 using System.Linq;
 using static Dapper.SqlMapper;
 using EFCore.BulkExtensions;
+using Microsoft.Extensions.DependencyInjection;
+using Chi_ExpenseTracker_Repesitory.Models;
 
 namespace Chi_ExpenseTracker_Repesitory.Database
 {
-    public class DbBase<Tentity, TDb> where Tentity : class where TDb : DbContext
+    public class DbBase<Tentity, Db> where Tentity : class where Db : DbContext
     {
         /// <summary>
         /// DB
         /// </summary>
-        protected readonly TDb _dbContext;
+        protected readonly Db _dbContext;
 
-        public DbBase(TDb dbContext)
+        public DbBase(IServiceProvider serviceProvider)
         {
+            var dbContext = serviceProvider.GetService<_ExpenseDbContext>();
+
             if (dbContext == null)
             {
                 throw new ArgumentNullException(nameof(dbContext));
@@ -31,7 +35,7 @@ namespace Chi_ExpenseTracker_Repesitory.Database
                 throw new ApplicationException($"DB Name={dbContext.GetType().Name}，查無連線字串!");
             }
 
-            _dbContext = dbContext;
+            _dbContext = dbContext as Db;
         }
 
         #region Dapper(執行SQL)

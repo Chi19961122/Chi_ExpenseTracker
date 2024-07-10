@@ -9,8 +9,7 @@ namespace Chi_ExpenseTracker_Repesitory.Models;
 public partial class UserEntity
 {
     [Key]
-    [Column("id")]
-    public int Id { get; set; }
+    public int UserId { get; set; }
 
     [StringLength(50)]
     [Unicode(false)]
@@ -33,4 +32,10 @@ public partial class UserEntity
     [StringLength(20)]
     [Unicode(false)]
     public string? Role { get; set; }
+
+    [InverseProperty("User")]
+    public virtual ICollection<CategoryEntity> Categories { get; set; } = new List<CategoryEntity>();
+
+    [InverseProperty("User")]
+    public virtual ICollection<TransactionEntity> Transactions { get; set; } = new List<TransactionEntity>();
 }
