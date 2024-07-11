@@ -2,9 +2,9 @@ Last updated: 20240711
 
 # ExpenseTracker
 
-[Triviagora](https://triviagora.web.app/)
+[Chi_ExpenseTracker](https://web.app/)
 
-test account: [test@example.com](mailto:test@example.com)
+test account: test@example.com
 
 password: 123456
 
@@ -68,6 +68,6 @@ password: 123456
     
     架構基礎設定：Infrastructure\
     
-    Jwt驗證中間件：Infrastructure\Jwt
+    Jwt驗證：Infrastructure\Jwt
     
     IOC注入設定 : Infrastructure\Ioc\AutofacModuleRegister
