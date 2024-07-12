@@ -2,11 +2,11 @@ Last updated: 20240711
 
 # ExpenseTracker
 
-[Chi_ExpenseTracker](https://web.app/)
+[Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/)
 
-test account: test@example.com
+test account：Test@example.com
 
-password: 123456
+password：123456
 
 # Introduction
 
