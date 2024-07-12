@@ -40,6 +40,19 @@ namespace Chi_ExpenseTracker_Repesitory.Infrastructure.Swagger
                             Array.Empty<string>()
                         }
                     });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherForecast API", Version = "v1" });
+            });
+        }
+        /// <summary>
+        /// 使用Swagger服務
+        /// </summary>
+        /// <param name="webApplication"></param>
+        public static void AddSwaggerConfigure(this WebApplication webApplication)
+        {
+            webApplication.UseSwagger();
+            webApplication.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
         }
     }

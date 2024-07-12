@@ -13,7 +13,7 @@ builder.AddConfiguration();
 
 //DB
 builder.Services.AddDbContext<_ExpenseDbContext>(
-        options => options.UseSqlServer(AppSettings.Connectionstrings?.ChiConn));
+        options => options.UseSqlServer(AppSettings.Connectionstrings?.Azure));
 //®M¥ó
 builder.AddSwagger();
 
@@ -38,12 +38,9 @@ builder.AddCorsPolicy();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.AddSwaggerConfigure();
+
+
 
 app.UseHttpsRedirection();
 

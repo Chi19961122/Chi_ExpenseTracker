@@ -41,6 +41,10 @@ namespace Chi_ExpenseTracker_Repesitory.Configuration
         /// 資料串接資料庫
         /// </summary>
         public string? Company { get; set; }
+        /// <summary>
+        /// 資料串接資料庫
+        /// </summary>
+        public string? Azure { get; set; }
     }
 
     /// <summary>
