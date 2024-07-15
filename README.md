@@ -4,9 +4,13 @@ Last updated: 20240715
 
 [Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/)
 
+### 可選擇自行註冊帳戶，或是使用下方測試帳號
+
 Test account：Test@example.com
 
 Password：123456
+
+p.s. 若遇到初次登入等候逾時失敗，可再嘗試一次。此因等待Azure伺服器啟動關係。
 
 # Introduction
 
