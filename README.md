@@ -6,7 +6,7 @@ Last updated: 20240715
 
 Test account：Test@example.com
 
-password：123456
+Password：123456
 
 # Introduction
 
