@@ -2,13 +2,13 @@ Last updated: 20240715
 
 # ExpenseTracker
 
-網頁連結： [Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/)
+* 網頁連結： [Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/)
 
-* 可選擇自行註冊帳戶，或是使用下方測試帳號
+* 可自行註冊帳戶，或是使用下方測試帳號登入
 
-Test account：Test@example.com
+    * Test account：Test@example.com
 
-Password：123456
+    * Password：123456
 
 p.s. 若遇到初次登入等候逾時失敗，可再嘗試一次。此因等待Azure伺服器啟動關係。
 
@@ -22,11 +22,11 @@ Chi_ExpenseTracker 是一個專為個人設計的簡單記帳系統，
 
 ### [主要功能]
 
-總覽頁：日期區間的總計金額與報表，快速了解近期收支狀況。
+* 總覽頁：日期區間的總計金額與報表，快速了解近期收支狀況。
 
-交易頁：支出和收入記錄，支持多種分類。
+* 交易頁：支出和收入記錄，支持多種分類。
 
-類別頁：可設定支出與收入的分類，方便用戶管理。
+* 類別頁：可設定支出與收入的分類，方便用戶管理。
 
 ### [技術簡介]
 
