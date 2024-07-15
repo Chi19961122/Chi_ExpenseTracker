@@ -4,7 +4,7 @@ Last updated: 20240715
 
 網頁連結： [Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/)
 
-### 可選擇自行註冊帳戶，或是使用下方測試帳號
+* 可選擇自行註冊帳戶，或是使用下方測試帳號
 
 Test account：Test@example.com
 
