@@ -10,19 +10,22 @@ password：123456
 
 # Introduction
 
-*　簡介
+* 簡介
+
 Chi_ExpenseTracker 是一個專為個人設計的簡單記帳系統，
 
 希望幫助用戶輕鬆追蹤和管理日常財務活動。
 
-*　主要功能
+* 主要功能
+
 總覽頁：日期區間的總計金額與報表，快速了解近期收支狀況。
 
 交易頁：支出和收入記錄，支持多種分類。
 
 類別頁：可設定支出與收入的分類，方便用戶管理。
 
-*　技術簡介
+* 技術簡介
+
 Chi_ExpenseTracker 以 .NET 8.0 為核心技術，
 
 採用 Entity Framework Core 和 Dapper 進行資料存取，
