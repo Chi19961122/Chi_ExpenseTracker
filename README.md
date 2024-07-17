@@ -2,7 +2,7 @@ Last updated: 20240715
 
 # ExpenseTracker
 
-* 網頁連結： [Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/)
+* 網頁連結： [Chi_ExpenseTracker](https://chiexpensetracker.netlify.app/login)
 
 * 可自行註冊帳戶，或是使用下方測試帳號登入
 
